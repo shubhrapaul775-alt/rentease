@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RentEase — Rental Property Finder</title>
+  <meta name="description" content="Find rental homes by location, budget and BHK." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">🏠 Rent<span>Ease</span></a>
+      <button id="favToggle" class="btn btn-outline" aria-pressed="false">
+        ♥ Saved <span id="favCount" class="badge">0</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Find your next home, easily.</h1>
+      <p>Search rental homes by location, budget and size.</p>
+      <div class="search-bar">
+        <input id="searchInput" type="search" placeholder="Search by city, area or title (e.g. Pune, Salt Lake)" aria-label="Search by location" />
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="filters" aria-label="Filters">
+      <div class="filter-group">
+        <label>BHK</label>
+        <div class="chips" id="bhkChips">
+          <button class="chip active" data-bhk="all">All</button>
+          <button class="chip" data-bhk="1">1 BHK</button>
+          <button class="chip" data-bhk="2">2 BHK</button>
+          <button class="chip" data-bhk="3">3 BHK</button>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label for="minRent">Rent (₹/month)</label>
+        <div class="range-inputs">
+          <input id="minRent" type="number" min="0" step="500" placeholder="Min" />
+          <span>–</span>
+          <input id="maxRent" type="number" min="0" step="500" placeholder="Max" />
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <label for="sortSelect">Sort by</label>
+        <select id="sortSelect">
+          <option value="relevance">Default</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      <button id="resetBtn" class="btn btn-outline">Reset</button>
+    </section>
+
+    <p id="resultCount" class="result-count" aria-live="polite"></p>
+    <section id="grid" class="grid"></section>
+    <div id="empty" class="empty" hidden>
+      <h3>No properties found</h3>
+      <p>Try changing your search or filters.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">© <span id="year"></span> RentEase — a demo project.</div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
